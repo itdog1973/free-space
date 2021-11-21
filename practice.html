@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;500;700;900&display=swap");
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            font-family: 'Noto Sans TC', sans-serif;
+        }
+        
+        body{
+            background: linear-gradient(90deg,#fe70d8,#3713c1);
+        }
+       @media screen and (max-width: 767px){
+           
+       
+        .main-header{
+            background: linear-gradient(90deg,#fe70d8,#3713c1);
+            position: relative;
+        }
+        .main-header .wrap{
+            display: flex;
+            
+          
+            
+        }
+        .main-header .logo{
+            width: 100px;
+            padding: 10px;
+        }
+        .main-header .logo img{
+            width: 100%;
+            vertical-align: bottom;
+            border-radius: 50%;
+        }
+
+        .control-btn{
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            top: 0px;
+            bottom: 0;
+            margin: auto;
+            right: 10px;
+            background-color: #000;
+
+        }
+        .control-btn span{
+            width: 1px;
+            height: 1px;
+            display: block;
+            overflow: hidden;
+        }
+        .control-btn span::before{
+            content: '';
+            position: absolute;
+            width: 36px;
+            height: 2px;
+            background-color: #ccc;
+            left: 2px;
+            top: 0px;
+            bottom: 0px;
+            margin: auto;
+            box-shadow: 0 8px 0 #ccc,
+                        0 -8px 0 #ccc;
+        }
+
+
+        .main-header nav{
+            width: 80%;
+            height: calc(100vh - 100px);
+            max-height: 500px;
+            background: linear-gradient(90deg,#fe70d8,#3713c1);
+            top: 120px;
+            position: absolute;
+            left: -100%;
+            transition: .3s;
+           
+        }
+        .main-header nav a{
+            color: #fff;
+            display: block;
+            text-decoration: none;
+            padding: 1.2em;
+            border-bottom: 1px solid #fff;
+
+        }
+        .main-header nav a:nth-child(1){
+            margin-top: 20px;
+            border-top: 1px solid yellowgreen;
+        }
+        .header-search{
+            position: absolute;
+            bottom: -25px;
+            width: 80%;
+            
+
+        }
+        .header-search form{
+            display: flex;
+            border:none;
+            position: relative;
+            left: -100%;
+            transition: .3s;
+        
+        }
+        .header-search input[type="search"]{
+            width: 0;
+            flex-grow: 1;
+            border:none;
+            padding-bottom: 5px;
+           
+        }
+        .header-search button{
+            border: none;
+
+        }
+        .header-search input[type="search"]:focus{
+            outline: none;
+            
+        }
+    }
+        #check-control:checked ~ .main-header > .wrap> nav{
+            left: 0;
+        }
+        #check-control:checked ~ .main-header > .wrap> .header-search form{
+            left: 0;
+        }
+        #check-control{
+            position: absolute;
+        }
+
+        .banner img{
+            width: 100%;
+            vertical-align: bottom;
+        }
+        .breadcrumb{
+            display: flex;
+            
+        }
+        .wrap .breadcrumb{
+            background: linear-gradient(90deg,#fe70d8,#3713c1);
+        }
+        .breadcrumb li{
+            padding: 5px 10px;
+        }
+        .breadcrumb a{
+            text-decoration: none;
+            color: #fff;
+        }
+        .breadcrumb li+li::before{
+            content: '>';
+            margin-right: 10px;
+
+        }
+        .breadcrumb li+li{
+            padding-left: 0;
+        }
+        .breadcrumb li:last-child a{
+            color: #00f;
+            border-bottom: 1px solid #fff;
+        }
+
+
+        .about .wrap{
+            width: 1200px;
+            margin: auto;
+        }
+        .about .wrap .item-group{
+            display: flex;
+        }
+
+        .about .title{
+            text-align: center;
+            margin: 20px 0 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .about .title h1{
+            padding-bottom: .4em;
+        }
+        .about .title p{
+            width: 700px;
+            
+        }
+
+        .about .item-group .pic img{
+            width: 100%;
+            vertical-align: bottom;
+        }
+        .about .item-group .item{
+            margin: 15px;
+            border: 1px solid #aaa;
+            width: 368px;
+            transform: translateY(0px);
+            transition: .5s;
+            
+        }
+        .about .item .txt{
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            background-color: #fff;
+            
+            
+            
+        }
+        .about .txt h2{
+            font-weight: 700;
+            margin-bottom: .3em;
+            padding-bottom: 0.3em;
+            transition: .25s;
+            
+        }
+        .about .txt p{
+            font-weight: 300;
+            line-height: 1.6;
+            transition: .25s;
+            
+        }
+        .about .txt::after{
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: 0;
+            left: 0;
+            border-top: 50px solid transparent;
+            border-left: 184px solid #fff;
+            border-right: 184px solid #fff;
+            transform: translateY(-100%);
+            
+            
+            
+        }
+
+        .about .item:hover .txt::after{
+            border-left: 184px solid #fe70d8;
+            border-right: 184px solid #fe70d8;
+        }
+        .about .item:hover{
+            transform: translateY(-30px);
+        }
+        .about .item:hover .txt{
+            background: linear-gradient(180deg,#fe70d8,#3713c1);
+        }
+        .about .item:hover  .txt h2{
+            color: #fff;
+        }
+        .about .item:hover .txt p{
+            color: #fff;
+        }
+
+        
+
+        .service .wrap{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service .title{
+            display: flex;
+            margin: 10px 0 30px;
+            justify-content: center;
+        }
+        .service .title h1{
+            border-bottom: 1px solid #000;
+            
+        }
+        .service .item-group{
+            display: flex;
+           
+        }
+        .service .item-group .item{
+            width: 25%;
+            position: relative;
+            
+        }
+
+        .service .pic img{
+            width: 100%;
+            vertical-align: bottom;
+        }
+
+        .service .txt{
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left:0;
+            right: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: rgba(0,0,0, .5);
+            padding: 20px;
+            opacity: 0;
+            transition:opacity .3s;
+           
+        }
+
+        .service .txt h2{
+            color: yellow;
+            font-weight: 500;
+            font-size: 28px;
+            
+        }
+        .service .txt p{
+            font-size: 18px;
+            color: #fff;
+            font-weight: 100;
+            
+        }
+
+        .service .item:hover .txt{
+            opacity: 1;
+        }
+        .service .txt h2::after{
+            content: '';
+            display: block;
+            width: 0%;
+            height: 2px;
+            background-color: #ff0;
+            margin: 10px 0;
+            transition: width 1s;
+
+        }
+
+        .service .item:hover .txt h2::after{
+            width: 100%;
+            margin: auto;
+        }
+
+        .service{
+            padding-bottom: 50px;
+        }
+
+        .main-footer{
+            background: linear-gradient(135deg,#fe70d8,#3713c1);
+        }
+        .main-footer .wrap{
+            padding-top: 50px;
+            width: 1200px;
+            display: flex;
+            margin: auto;
+            
+        }
+        .main-footer .footer-item{
+            width: 0;
+            flex-grow: 1;
+            margin: 0 20px;
+        }
+        .main-footer nav{
+            display: flex;
+            flex-direction: column;
+        }
+        .main-footer nav a{
+            text-decoration: none;
+            padding: 5px 0;
+            color: #fff;
+            line-height: 1.4;
+        }
+        .copy-right{
+            margin-top: 50px;
+            text-align: center;
+            padding: 10px 0;
+            
+            color: #fff;
+        }
+        .main-footer .footer-item h4{
+            border-bottom: 1px dotted #000;
+            margin-bottom: 0.5em;
+            padding-bottom: 0.5em;
+        }
+        .search-sub{
+            display: flex;
+            flex-direction: column;
+        }
+        .search-sub form{
+            margin: auto 0;
+            display: flex;
+            width: 100%;
+        }
+        .search-sub form input[type="text"], .search-sub form input[type="submit"]{
+            border: none;
+            padding: 5px 10px;
+        }
+        .search-sub form input[type="text"]:focus, .search-sub form input[type="submit"]:focus{
+            outline: none;
+        }
+        .search-sub  input[type="text"]{
+            width: 0;
+            flex-grow: 1;
+        }
+        .search-sub input[type="submit"]{
+            color: #70f6df;
+            background-color: #3e5293;
+        }
+
+        @media screen and (min-width:768px) {
+            #check-control, .control-btn{
+                display: none;
+            }
+            .main-header{
+            background: linear-gradient(0deg, rgb(254, 112, 216),#3713c1)
+             }
+             body{
+                padding-top: 120px;
+             }
+            .main-header .wrap{
+                display: flex;
+                margin: auto;
+                padding: 20px;
+                align-items: center;
+                justify-content: center;
+                height: 80px;
+                position: fixed;
+                width: 1230px;
+                top: 0;
+                left: 0;
+                background-color: rgba(254, 112, 216,.5);
+                
+                
+
+            }
+            .main-header nav{
+                margin: auto;
+                position: relative;
+                right: -120px;
+                
+            }
+            .main-header nav a{
+                text-decoration: none;
+                padding: 5px 2em;
+                color: #fff;
+            }
+            .main-header .logo{
+                width: 100px;
+                position: absolute;
+            }
+            .main-header .logo img{
+                width:100%;
+                vertical-align: bottom;
+                border-radius: 50%;
+                
+            
+            }
+        
+
+           
+            .header-search form{
+                display: flex;
+            }
+
+            .header-search input, .header-search button{
+                border: none;
+                background-color: #fff;
+                padding: 5px 10px;
+            }
+
+            .header-search input:focus, .header-search button:focus{
+                outline: none;
+            }
+
+            
+            
+            
+            .main-header nav a:nth-child(3){
+                margin-left: 100px;
+            }
+
+            .main-header nav a:hover{
+                color: #000;
+            }
+    }
+    </style>
+</head>
+<body>
+    <input type="checkbox" name="" id="check-control">
+    <div class="main-header">
+        <div class="wrap">
+            
+            <a href="#" class="logo">
+                <img src="https://picsum.photos/150/150/?random=1" alt="jason ko"> 
+            </a>
+
+            
+                <label for="check-control" class="control-btn"><span>選單</span></label>
+                <nav>
+                    <a href="#">link</a>
+                    <a href="#">link</a>
+                    <a href="#">link</a>
+                    <a href="#">link</a>
+                </nav>
+                <div class="header-search">
+                    <form action="">
+                        <input type="search" name="" id="">
+                        <button><i class="fas fa-search"></i></button>
+                    </form>
+                </div>
+            
+        </div>
+    </div>
+
+
+
+
+    <div class="banner">
+        <img src="https://picsum.photos/1200/300/?random=2">
+    </div>
+
+
+    <div class="wrap">
+        <ol class="breadcrumb">
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+            <li><a href="#">link</a></li>
+        </ol>
+    </div>
+
+
+    <div class="about">
+        <div class="wrap">
+            <div class="title">
+                <h1>成員介紹</h1>
+                <p>見到使得經常不代表全新電器社會，此時網易五年稿件特徵參觀臺中開心更大負責，代表能源容易產業或者重點公里大眾固定電腦聰明房東來源有點桃園，受傷一名觀眾也能職責辦理回到一批將其，軟體你還趨勢發現對方好像，玄幻幹什麼，義務就算文明雲林，愛情父親，所需嘗試或者然。</p>
+            </div>
+            <div class="item-group">
+                <div class="item">
+                    <div class="pic"><img src="https://picsum.photos/300/200/?random=1"></div>
+                    <div class="txt">
+                        <h2>title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, harum facilis! Delectus enim earum fugiat eveniet in facere distinctio perferendis? Vitae odit eos repudiandae aut amet accusamus inventore facilis atque.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pic"><img src="https://picsum.photos/300/200/?random=1"></div>
+                    <div class="txt">
+                        <h2>title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, harum facilis! Delectus enim earum fugiat eveniet in facere distinctio perferendis? Vitae odit eos repudiandae aut amet accusamus inventore facilis atque.</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="pic"><img src="https://picsum.photos/300/200/?random=1"></div>
+                    <div class="txt">
+                        <h2>title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia, harum facilis! Delectus enim earum fugiat eveniet in facere distinctio perferendis? Vitae odit eos repudiandae aut amet accusamus inventore facilis atque.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<div class="service">
+    <div class="wrap">
+        <div class="title">
+            <h1>服務項目</h1>
+        </div>
+        <div class="item-group">
+            <div class="item">
+                <div class="pic"><img src="https://picsum.photos/500/400/?random=1"></div>
+                <div class="txt">
+                    <h2>title</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat illum expedita alias rem ex nemo consequatur nisi quam, dolorum nobis! Explicabo eligendi soluta mollitia aliquam obcaecati saepe vero voluptates dignissimos?</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pic"><img src="https://picsum.photos/500/400/?random=21"></div>
+                <div class="txt">
+                    <h2>title</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat illum expedita alias rem ex nemo consequatur nisi quam, dolorum nobis! Explicabo eligendi soluta mollitia aliquam obcaecati saepe vero voluptates dignissimos?</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pic"><img src="https://picsum.photos/500/400/?random=31"></div>
+                <div class="txt">
+                    <h2>title</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat illum expedita alias rem ex nemo consequatur nisi quam, dolorum nobis! Explicabo eligendi soluta mollitia aliquam obcaecati saepe vero voluptates dignissimos?</p>
+                </div>
+            </div>
+            <div class="item">
+                <div class="pic"><img src="https://picsum.photos/500/400/?random=41"></div>
+                <div class="txt">
+                    <h2>title</h2>
+                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugiat illum expedita alias rem ex nemo consequatur nisi quam, dolorum nobis! Explicabo eligendi soluta mollitia aliquam obcaecati saepe vero voluptates dignissimos?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="main-footer">
+    <div class="wrap">
+        <div class="footer-item">
+            <h4>title</h4>
+            <nav>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+            </nav>
+
+        </div>
+        <div class="footer-item">
+            <h4>title</h4>
+            <nav>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+            </nav>
+
+        </div>
+        <div class="footer-item">
+            <h4>title</h4>
+            <nav>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+                <a href="#"><i class="fas fa-arrow-right"></i>link</a>
+            </nav>
+
+        </div>
+        <div class="footer-item search-sub">
+            <h4>subscribe</h4>
+            <form action="">
+                <input type="text" name="" id="">
+                <input type="submit" value="訂閱">
+            </form>
+        </div>
+    </div>
+    <div class="copy-right">
+        copy-right&copy; by jason ko 2021
+    </div>
+</div>
+
+</body>
+</html>
